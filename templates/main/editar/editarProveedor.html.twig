@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/estiloEsencial.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estiloFormES.css') }}">
+{% endblock %}
+
+{% block title %}PROVEEDORLY{% endblock %}
+
+{% block body %}
+<a href="{{path("app_main")}}">
+    <h1>PROVEEDORLY</h1>
+</a>
+<h2>Editar proveedor</h2>
+<div class="mainContainer">
+    {% if proveedorEncontrado is null %}
+     <form  action="{{ path('buscar_proveedor') }}" method="post" class="contact_form">
+            <label>Inserte el proveedor a editar</label>
+            <input type="text" placeholder="Nombre" name="Nombre" required>
+            <input type="submit" value="Buscar" class="send_btn">
+    </form>
+    {% endif %}
+
+    {% if proveedorEncontrado is not null %}
+        <form action="{{ path('editar_proveedor', {'id': proveedorEncontrado.id}) }}" method="post" class="contact_form">
+            <input type="text" placeholder="Nombre" name="Nombre" value="{{ proveedorEncontrado.nombre }}" required readonly>
+            <input type="text" placeholder="Correo" name="Correo" value="{{ proveedorEncontrado.correo }}" required>
+            <input type="text" placeholder="Telefono" name="Telefono" value="{{ proveedorEncontrado.telefono }}" required>
+            <label>Proveedor</label>
+             <select name="Proveedor" required>
+                <option value="hotel" {% if proveedorEncontrado.tipoProveedor == 'hotel' %}selected{% endif %}>Hotel</option>
+                <option value="pista" {% if proveedorEncontrado.tipoProveedor == 'pista' %}selected{% endif %}>Pista</option>
+                <option value="complemento" {% if proveedorEncontrado.tipoProveedor == 'complemento' %}selected{% endif %}>Complemento</option>
+            </select>
+            <label>Activo</label>
+            <select name="Activo" required>
+                <option value=1 {% if proveedorEncontrado.activo %}selected{% endif %}>Sí</option>
+                <option value=0 {% if not proveedorEncontrado.activo %}selected{% endif %}>No</option>
+            </select>
+            <input type="submit" value="Guardar cambios" class="send_btn">
+        </form>
+    {% endif %}
+</div>
+    <div class="volver">
+        <a href="{{path("app_main")}}">Volver</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/estiloIndex.css') }}">
+{% endblock %}
+
+{% block title %}PROVEEDORLY{% endblock %}
+
+{% block body %}
+<div class="mainContainer">
+    <h1>PROVEEDORLY</h1>
+    <div class="linkContainer">
+        <a href="{{ path("nuevo_proveedor") }}">Insertar un nuevo proveedor</a>
+        <a href="{{ path('buscar_proveedor') }}">Editar proveedor</a>
+        <a href="{{ path('buscar_proveedorElim') }}">Eliminar proveedor</a>
+        <a href="{{ path('mostrar_proveedores') }}">Mostrar proveedores</a>
+    </div>
+</div>
+<div class="camion"></div>
+{% endblock %}

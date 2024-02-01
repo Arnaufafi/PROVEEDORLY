@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/estiloEsencial.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estiloFormES.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilotablaES.css') }}">
+{% endblock %}
+
+{% block title %}PROVEEDORLY{% endblock %}
+
+{% block body %}
+
+<a href="{{path("app_main")}}">
+    <h1>PROVEEDORLY</h1>
+</a>
+<h2>Eliminar proveedor</h2>
+<div class="mensajeCorrecto">
+    <p>Se ha eliminado correctamente el proveedor</p>
+</div>
+<div class="mainContainer">
+
+    <form  action="{{ path('buscar_proveedorElim') }}" method="post" class="contact_form">
+            <input type="text" placeholder="Nombre" name="Nombre" required>
+            <input type="submit" value="Buscar" class="send_btn">
+    </form>
+</div>
+    <div class="volver">
+        <a href="{{path("app_main")}}">Volver</a>
+    </div>
+{% endblock %}

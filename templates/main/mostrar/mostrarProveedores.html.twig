@@ -1,0 +1,53 @@
+{# listar_proveedores.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/estiloEsencial.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estiloFormES.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilotablaES.css') }}">
+{% endblock %}
+
+{% block title %}Listado de Proveedores{% endblock %}
+
+{% block body %}
+<a href="{{path("app_main")}}">
+    <h1>PROVEEDORLY</h1>
+</a>
+    <h2>Listado de Proveedores</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Tipo Proveedor</th>
+                <th>Activo</th>
+                <th>Fecha introduccion</th>
+                <th>Fecha ultima Modificacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in proveedores %}
+                <tr>
+                    <td>{{ proveedor.getId() }}</td>
+                    <td>{{ proveedor.getNombre() }}</td>
+                    <td>{{ proveedor.getCorreo() }}</td>
+                    <td>{{ proveedor.getTelefono() }}</td>
+                    <td>{{ proveedor.getTipoProveedor() }}</td>
+                    <td style="color: {{ proveedor.getActivo() == 1 ? 'green' : 'red' }}">
+                        {{ proveedor.getActivo() == 1 ? 'Activo' : 'No activo' }}
+                    </td>   
+                    <td>{{ proveedor.getIntroduccionBD() }}</td>
+                    <td>{{ proveedor.getUltimaModificacionBD() }}</td>        
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="volver">
+        <a href="{{path("app_main")}}">Volver</a>
+    </div>
+{% endblock %}

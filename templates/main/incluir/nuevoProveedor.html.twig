@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/estiloEsencial.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estiloFormES.css') }}">
+{% endblock %}
+
+{% block title %}PROVEEDORLY{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<a href="{{path("app_main")}}">
+    <h1>PROVEEDORLY</h1>
+</a>
+<h2>NUEVO PROVEEDOR</h2>
+<div class="mainContainer">
+    <form action="{{ path('nuevo_proveedor') }}" method="post" class="contact_form">
+    <label>Datos</label>
+    <input type="text" placeholder="Nombre" name="Nombre" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Solo se permiten letras y espacios" required>
+    <input type="email" placeholder="Correo" name="Correo" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Ingrese una dirección de correo válida" required>
+    <input type="tel" placeholder="Telefono" name="Telefono" pattern="[0-9\+]+" title="Ingrese un numero de telefono valido" required>
+
+    <label>Proveedor</label>
+    <select name="Proveedor" required>
+        <option value="hotel">Hotel</option>
+        <option value="pista">Pista</option>
+        <option value="complemento">Complemento</option>
+    </select>
+    
+    <label>Activo</label>
+    <select name="Activo" required>
+        <option value=1>Sí</option>
+        <option value=0>No</option>
+    </select>
+    
+    <input type="submit" value="Introducir" class="send_btn">
+    </form>
+</div>
+    <div class="volver">
+        <a href="{{path("app_main")}}">Volver</a>
+    </div>
+{% endblock %}
