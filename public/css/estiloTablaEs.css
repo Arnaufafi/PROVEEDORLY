@@ -1,0 +1,75 @@
+table{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 5%;
+    padding-bottom: 10%;
+    background-color: rgba(254, 254, 254, 0.77);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    border-collapse: collapse;
+    overflow: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+
+/* Media Queries */
+
+/* Para dispositivos pequeños (móviles en modo retrato) como mínimo 270px */
+@media only screen and (max-width: 680px) {
+
+    table {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+    }
+
+    tbody{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    tr {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    th, td {
+        padding: 10px;
+        flex: 1;
+        text-align: left;
+        border: 1px solid rgb(138, 138, 138);
+        text-wrap: nowrap;
+        overflow: auto;
+
+    }
+}
+
+/* Para dispositivos medianos y grandes (tabletas y escritorios)*/
+@media only screen and (min-width: 681px) {
+
+   
+    tbody{
+        width: 100%;
+    }
+
+    thead{
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px;
+
+        flex: 1;
+        text-align: left;
+        border: 1px solid black;
+        text-wrap: wrap;
+        min-width: 180px;
+        max-width: 180px;
+    }
+}

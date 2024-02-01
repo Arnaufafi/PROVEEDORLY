@@ -1,0 +1,145 @@
+
+body{
+
+    background: linear-gradient(to bottom, #74d4f9, #ADD8E6);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+h1{
+    color: rgb(255, 255, 255);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+a {
+    color: rgb(216, 216, 216);
+    transition: color 0.3s, font-size 0.1s; 
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+
+.mainContainer{
+
+    width: 100%;
+    height: fit-content;
+    background-color: none;
+    display:  flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+.linkContainer{
+    width: 60%;
+    height: 40vh;
+    background-color: rgba(35, 35, 35, 0.77);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+
+.camion {
+    width: 500px;
+    height: 500px;
+    background-image: url("/App_viajes/public/imagenes/camion.png");
+    background-size: cover;  
+    left: 50%;
+    animation: desplazar 1s ease-in-out;
+}
+
+/* Media Queries */
+
+/* Para dispositivos muy pequeños (móviles en modo retrato)  */
+@media only screen and (max-width: 351px) {
+    h1{
+
+        font-size: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    a {
+        font-size: 0.9em;
+    }
+
+    .linkContainer{
+        width: 95%;
+    }
+    .camion {
+        width: 200px;
+        height: 200px;
+        margin-top: -100px;
+    }
+}
+
+/* Para dispositivos pequeños (móviles en modo retrato)  */
+@media only screen and (min-width: 351px) {
+    h1{
+
+        font-size: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    a {
+        font-size: 1.2em;
+    }
+
+    .linkContainer{
+        width: 95%;
+    }
+    .camion {
+        width: 200px;
+        height: 200px;
+        margin-top: -100px;
+    }
+}
+
+/* Para dispositivos medianos y grandes (tabletas y escritorios) */
+@media only screen and (min-width: 681px) {
+     
+    
+    h1{
+        font-size: 50px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    a {
+        font-size: 1.4em;
+    }
+
+    .linkContainer {
+        width: 70%;
+    }
+    .camion {
+        width: 300px;
+        height: 300px;
+        margin-top: -50px;
+    }
+}
+
+/* Para dispositivos grandes (escritorios) */
+@media only screen and (min-width: 992px) {
+    .linkContainer {
+        width: 60%;
+    }
+}
+
+@keyframes desplazar {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%); 
+    }
+}
