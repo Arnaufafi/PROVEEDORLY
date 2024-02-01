@@ -36,8 +36,7 @@ class MainController extends AbstractController
         if ($request->isMethod('POST')) {
             $nombre = $_POST["Nombre"];
 
-            // Verificar existencia del proveedor, para evitar repetidos
-            $proveedorExistente = $this->getDoctrine()
+            $proveedorExistente = $this->getDoctrine()  // Verificar existencia del proveedor, para evitar repetidos
             ->getRepository(Proveedores::class)
             ->findOneBy(['nombre' => $nombre]);
 
@@ -47,7 +46,7 @@ class MainController extends AbstractController
              ]);
              }
 
-            $correo = $_POST["Correo"];
+            $correo = $_POST["Correo"];                 // Obteción del valor de las variables usando información del formulario
             $telefono = $_POST["Telefono"];
             $tipoProveedor = $_POST["Proveedor"];
             $activo = $_POST["Activo"];
@@ -55,7 +54,7 @@ class MainController extends AbstractController
             $Proveedores = new Proveedores($nombre, $correo, $telefono, $tipoProveedor, $activo, $introduccionDB, $introduccionDB);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($Proveedores);
-            $entityManager->flush();
+            $entityManager->flush();                        // Actualización base de datos
             return $this->render('main/incluir/nuevoProveedorCreado.html.twig', [
                 'controller_name' => 'MainController',
             ]);
@@ -163,8 +162,8 @@ class MainController extends AbstractController
      */
     public function eliminarProveedor(Request $request, Proveedores $proveedorEncontrado,EntityManagerInterface $entityManager): Response
     {   
-        $proveedor = $proveedorEncontrado;
-        $entityManager = $this->getDoctrine()->getManager();
+        $proveedor = $proveedorEncontrado;                      //Cargamos en proveedor, el proveedor deseado a eliminar
+        $entityManager = $this->getDoctrine()->getManager();    
         $entityManager->remove($proveedor);
         $entityManager->flush();
         return $this->render('main/eliminar/eliminarProveedorCorrecto.html.twig');
@@ -179,10 +178,10 @@ class MainController extends AbstractController
      */
     public function mostrarProveedores(): Response
     {
-        $proveedores = $this->getDoctrine()->getRepository(Proveedores::class)->findAll();
+        $proveedores = $this->getDoctrine()->getRepository(Proveedores::class)->findAll();  //Cargar todos
 
         return $this->render('main/mostrar/mostrarProveedores.html.twig', [
-            'proveedores' => $proveedores,
+            'proveedores' => $proveedores,                                                  //Devolver todos
         ]);
     }
     
